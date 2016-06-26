@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{613B4AB4-BFD3-46F7-983F-CA61CE0319A9}</ProjectGuid>
+    <RootNamespace>Snake</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>.\Source;.\include\freetype-2.3.5-1;.\include\glm;.\include\glew-1.13.0;.\include\SDL2_ttf-2.0.14;.\include\SDL2-2.0.4;.\include\SDL2_image-2.0.1;$(IncludePath)</IncludePath>
+    <LibraryPath>.\lib\freetype-2.3.5-1;.\lib\glew-1.13.0\Release\Win32;.\lib\SDL2_ttf-2.0.14\x86;.\lib\SDL2-2.0.4\x86;.\lib\SDL2_image-2.0.1\x86;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>.\Source;.\include\freetype-2.3.5-1;.\include\glm;.\include\glew-1.13.0;.\include\SDL2_ttf-2.0.14;.\include\SDL2-2.0.4;.\include\SDL2_image-2.0.1;$(IncludePath)</IncludePath>
+    <LibraryPath>.\lib\freetype-2.3.5-1;.\lib\glew-1.13.0\Release\Win32;.\lib\SDL2_ttf-2.0.14\x86;.\lib\SDL2-2.0.4\x86;.\lib\SDL2_image-2.0.1\x86;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;OpenGL32.lib;freetype.lib;glew32.lib;glew32s.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+    <FxCompile>
+      <ShaderType>
+      </ShaderType>
+    </FxCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;OpenGL32.lib;freetype.lib;glew32.lib;glew32s.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+    <FxCompile>
+      <ShaderType>
+      </ShaderType>
+    </FxCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\Application\application.cpp" />
+    <ClCompile Include="Source\Containers\playground.cpp" />
+    <ClCompile Include="Source\Containers\scoreboard.cpp" />
+    <ClCompile Include="Source\Containers\snake.cpp" />
+    <ClCompile Include="Source\Managers\fontsmanager.cpp" />
+    <ClCompile Include="Source\Managers\ModelManager.cpp" />
+    <ClCompile Include="Source\Managers\shadersmanager.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Source\Math\Vector3\Vector3.cpp" />
+    <ClCompile Include="Source\Models\BasicDrawableObject.cpp" />
+    <ClCompile Include="Source\Models\letter.cpp" />
+    <ClCompile Include="Source\Models\line.cpp" />
+    <ClCompile Include="Source\Models\model.cpp" />
+    <ClCompile Include="Source\Models\quad.cpp" />
+    <ClCompile Include="Source\Models\TextureDrawableObject.cpp" />
+    <ClCompile Include="Source\Shaders\shader.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Source\Application\application.h" />
+    <ClInclude Include="Source\Containers\playground.h" />
+    <ClInclude Include="Source\Containers\scoreboard.h" />
+    <ClInclude Include="Source\Containers\snake.h" />
+    <ClInclude Include="Source\Managers\fontsmanager.h" />
+    <ClInclude Include="Source\Managers\ModelManager.h" />
+    <ClInclude Include="Source\Managers\shadersmanager.h" />
+    <ClInclude Include="Source\Math\Vector3\Vector3.h" />
+    <ClInclude Include="Source\Models\BasicDrawableObject.h" />
+    <ClInclude Include="Source\Models\letter.h" />
+    <ClInclude Include="Source\Models\line.h" />
+    <ClInclude Include="Source\Models\model.h" />
+    <ClInclude Include="Source\Models\quad.h" />
+    <ClInclude Include="Source\Models\TextureDrawableObject.h" />
+    <ClInclude Include="Source\Settings\settings.h" />
+    <ClInclude Include="Source\Shaders\shader.h" />
+    <ClInclude Include="Source\Vertex\vertex.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="BasicFragmentShader.txt" />
+    <Text Include="TextureFragmentShader.txt" />
+    <Text Include="TextureVertexShader.txt" />
+    <Text Include="BasicVertexShader.txt" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
