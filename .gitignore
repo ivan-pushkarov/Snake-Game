@@ -1,6 +1,7 @@
 #Directories to ignore
 Debug/
 Release/
+Snake/Release/
 .vs/
 
 #Files to ignore
