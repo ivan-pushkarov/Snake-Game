@@ -1,7 +1,7 @@
 #Directories to ignore
-/Debug/*
-/Release/*
-/.vs/*
+Debug/
+Release/
+.vs/
 
 #Files to ignore
 *.sdf
