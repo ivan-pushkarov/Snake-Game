@@ -69,12 +69,12 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>.\Source;.\include\freetype-2.3.5-1;.\include\glm;.\include\glew-1.13.0;.\include\SDL2_ttf-2.0.14;.\include\SDL2-2.0.4;.\include\SDL2_image-2.0.1;$(IncludePath)</IncludePath>
-    <LibraryPath>.\lib\freetype-2.3.5-1;.\lib\glew-1.13.0\Release\Win32;.\lib\SDL2_ttf-2.0.14\x86;.\lib\SDL2-2.0.4\x86;.\lib\SDL2_image-2.0.1\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>.\Source;.\include\freetype-2.3.5-1;.\include\glm;.\include\glew-1.13.0;.\include\SDL2-2.0.4;$(IncludePath)</IncludePath>
+    <LibraryPath>.\lib\freetype-2.3.5-1;.\lib\glew-1.13.0\Release\Win32;.\lib\SDL2-2.0.4\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>.\Source;.\include\freetype-2.3.5-1;.\include\glm;.\include\glew-1.13.0;.\include\SDL2_ttf-2.0.14;.\include\SDL2-2.0.4;.\include\SDL2_image-2.0.1;$(IncludePath)</IncludePath>
-    <LibraryPath>.\lib\freetype-2.3.5-1;.\lib\glew-1.13.0\Release\Win32;.\lib\SDL2_ttf-2.0.14\x86;.\lib\SDL2-2.0.4\x86;.\lib\SDL2_image-2.0.1\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>.\Source;.\include\freetype-2.3.5-1;.\include\glm;.\include\glew-1.13.0;.\include\SDL2-2.0.4;$(IncludePath)</IncludePath>
+    <LibraryPath>.\lib\freetype-2.3.5-1;.\lib\glew-1.13.0\Release\Win32;.\lib\SDL2-2.0.4\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
