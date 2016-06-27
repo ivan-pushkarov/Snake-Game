@@ -38,13 +38,11 @@
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -76,6 +74,14 @@
     <IncludePath>.\Source;.\include\freetype-2.3.5-1;.\include\glm;.\include\glew-1.13.0;.\include\SDL2-2.0.4;$(IncludePath)</IncludePath>
     <LibraryPath>.\lib\freetype-2.3.5-1;.\lib\glew-1.13.0\Release\Win32;.\lib\SDL2-2.0.4\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>.\include\SDL2-2.0.4;.\include\glew-1.13.0;.\include\glm;.\include\freetype-2.3.5-1;.\Source;$(IncludePath)</IncludePath>
+    <LibraryPath>.\lib\SDL2-2.0.4\x64;.\lib\glew-1.13.0\Release\x64;.\lib\freetype-2.3.5-1;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>.\include\SDL2-2.0.4;.\include\glew-1.13.0;.\include\glm;.\include\freetype-2.3.5-1;.\Source;$(IncludePath)</IncludePath>
+    <LibraryPath>.\lib\SDL2-2.0.4\x64;.\lib\glew-1.13.0\Release\x64;.\lib\freetype-2.3.5-1;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -90,6 +96,9 @@
       <ShaderType>
       </ShaderType>
     </FxCompile>
+    <PostBuildEvent>
+      <Command> xcopy /d /y "$(ProjectDir)\dlls\*.*" "$(ProjectDir)\..\Release"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -97,6 +106,13 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
     </ClCompile>
+    <Link>
+      <AdditionalDependencies>SDL2.lib;OpenGL32.lib;freetype235.lib;freetype.lib;glew32.lib;glew32s.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+    <PostBuildEvent>
+      <Command> xcopy /d /y "$(ProjectDir)dlls\*.*" "$(SolutionDir)"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -116,6 +132,9 @@
       <ShaderType>
       </ShaderType>
     </FxCompile>
+    <PostBuildEvent>
+      <Command> xcopy /d /y "$(ProjectDir)\dlls\*.*" "$(ProjectDir)\..\Release"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -128,7 +147,12 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>SDL2.lib;OpenGL32.lib;freetype235.lib;freetype.lib;glew32.lib;glew32s.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Windows</SubSystem>
     </Link>
+    <PostBuildEvent>
+      <Command> xcopy /d /y "$(ProjectDir)dlls\*.*" "$(SolutionDir)"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Source\Application\application.cpp" />
