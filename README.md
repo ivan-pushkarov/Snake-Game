@@ -1,7 +1,7 @@
 ### Setting up development environment
 _________________________________________________________________________________________
 
-* Windows OS:
+Windows OS:
 
 	* Install Microsoft Visual Studio 2015;
 
