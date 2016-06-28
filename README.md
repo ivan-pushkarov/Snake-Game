@@ -30,7 +30,7 @@ ________________________________________________________________________________
 
 * Model - Abstract base class. Stores model's information - Buffer IDs, Shader IDs,
 model's position, rotation, scale and move direction. It leaves the implementation of 
-loadModelToVRAM() and InitializeVertices() methods to BasicDrawableObject and TextureDrawableObject classes,
+`loadModelToVRAM()` and `InitializeVertices()` methods to `BasicDrawableObject` and `TextureDrawableObject` classes,
 based on that if the object has textures or doesn't.
 
 * ModelManager - Singleton class resposible for generating buffers on the VRAM for storing the model's vertices.
