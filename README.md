@@ -2,10 +2,10 @@
 _________________________________________________________________________________________
 
 This is my implementation of the classical snake game. It has a playground consisting of 200 tiles - (10 x 20)
-and a Scoreboard displaying you current score, the highest score so far, you current level and speed.
+and a Scoreboard displaying your current score, the highest score so far, your current level and speed.
 To control the snake's movement use the UP, DOWN, RIGHT and LEFT arrows or the "W", "S", "A", "D" keys.
 The game has 10 levels, on each of which, your snake's move speed increases and you also need to reach a bigger length
-in order to complete the level. 
+in order to complete the level.
 
 ### Setting up development environment
 _________________________________________________________________________________________
