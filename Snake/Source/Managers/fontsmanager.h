@@ -1,6 +1,4 @@
 #pragma once
-#ifndef FONTSMANAGER_H
-#define FONTSMANAGER_H
 
 #include <iostream>
 #include "settings/settings.h"
@@ -13,7 +11,7 @@ public:
 
 	bool init();
 
-	const FT_Face getFace(const std::string);
+	const FT_Face getFace(const std::string&);
 
 	bool loadFont(const char*);
 
@@ -22,8 +20,6 @@ public:
 private:
 
 	Fontsmanager();
-
-	static Fontsmanager* instance;
 
 	bool readFontFile(const char*);
 
@@ -38,5 +34,3 @@ private:
 	std::unordered_map<std::string, FT_Face> _fonts;
 
 };
-
-#endif // !FONTSMANAGER_H

@@ -1,6 +1,4 @@
 #pragma once
-#ifndef APPLICATION_H
-#define APPLICATION_H
 
 #include <string>
 #include "models/line.h"
@@ -13,11 +11,11 @@ class Application
 public:
 	Application();
 
+	~Application();
+
 	void close();
 
 	void run();
-
-	~Application();
 
 protected:
 
@@ -39,5 +37,3 @@ private:
 
 	Line* _line;
 };
-
-#endif // !APPLICATION_H

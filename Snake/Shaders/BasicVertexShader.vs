@@ -7,7 +7,6 @@ uniform mat4 mT;
 
 void main()
 {
-	gl_BackColor = _Color;
 	gl_FrontColor = _Color;
 	gl_Position = mT*_Position;
 }

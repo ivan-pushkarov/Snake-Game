@@ -1,6 +1,4 @@
-#include "fontsmanager.h"
-
-Fontsmanager* Fontsmanager::instance = 0;
+#include "FontsManager.h"
 
 Fontsmanager::Fontsmanager() : _fontNumber(-1)
 {
@@ -10,6 +8,16 @@ Fontsmanager::Fontsmanager() : _fontNumber(-1)
 	loadFont(Settings::BoldFont.c_str());
 }
 
+Fontsmanager::~Fontsmanager()
+{
+	for (std::unordered_map<std::string, FT_Face>::iterator it = _fonts.begin(); it != _fonts.end(); ++it)
+	{
+		FT_Done_Face(it->second);
+	}
+
+	FT_Done_FreeType(_ft);
+}
+
 Fontsmanager& Fontsmanager::getInstance()
 {
 	static Fontsmanager instance;
@@ -17,17 +25,24 @@ Fontsmanager& Fontsmanager::getInstance()
 	return instance;
 }
 
-const FT_Face Fontsmanager::getFace(const std::string font)
+const FT_Face Fontsmanager::getFace(const std::string& font)
 {
 	if (_fonts.find(font) != _fonts.end())
+	{
 		return _fonts[font];
-	else printf_s("Error: Font %s not found!", font.c_str());
+	}
+	else
+	{
+		printf_s("Error: Font %s not found!", font.c_str());
+		return 0;
+	}
 }
 
 bool Fontsmanager::init()
 {
 	/* Initialize the FreeType2 library */
-	if (FT_Init_FreeType(&_ft)) {
+	if (FT_Init_FreeType(&_ft)) 
+	{
 		printf("Could not init freetype library.\n");
 		return false;
 	}
@@ -44,12 +59,14 @@ bool Fontsmanager::loadFont(const char* file)
 	{
 		_fontNumber++;
 
-		if (_font[_fontNumber].empty()) {
+		if (_font[_fontNumber].empty()) 
+		{
 			std::cerr << "Could not load font file " << file << std::endl;
 			return false;
 		}
 		FT_Error fterr = FT_New_Memory_Face(_ft, (FT_Byte*)(_font[_fontNumber].data()), _fontFileSize, 0, &_Face);
-		if (fterr != FT_Err_Ok) {
+		if (fterr != FT_Err_Ok) 
+		{
 			std::cerr << "Could not init font: error 0x" << std::hex << fterr << std::endl;
 			return false;
 		}
@@ -85,7 +102,9 @@ bool Fontsmanager::readFontFile(const char* fontfilename)
 		char* font = new char[file_length + 1];
 
 		for (unsigned int i = 0; i < file_length + 1; i++)
+		{
 			font[i] = 0;
+		}
 
 		fread(font, 1, file_length, fp);
 
@@ -95,7 +114,9 @@ bool Fontsmanager::readFontFile(const char* fontfilename)
 		std::vector<char> curFont;
 
 		for (unsigned int i = 0; i < file_length + 1; i++)
+		{
 			curFont.push_back(font[i]);
+		}
 
 		_font.push_back(curFont);
 
@@ -108,12 +129,4 @@ bool Fontsmanager::readFontFile(const char* fontfilename)
 		printf_s("Error reading %s font file.", fontfilename);
 		return false;
 	}
-}
-
-Fontsmanager::~Fontsmanager()
-{
-	for (std::unordered_map<std::string, FT_Face>::iterator it = _fonts.begin(); it != _fonts.end(); ++it)
-		FT_Done_Face(it->second);
-
-	FT_Done_FreeType(_ft);
 }

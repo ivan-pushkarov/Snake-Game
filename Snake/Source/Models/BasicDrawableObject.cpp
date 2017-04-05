@@ -1,6 +1,6 @@
-#include "basicdrawableobject.h"
+#include "BasicDrawableObject.h"
 
-BasicDrawableObject::BasicDrawableObject() : Model(Shadersmanager::getInstance().getProgramID(Settings::BasicShader))
+BasicDrawableObject::BasicDrawableObject() : Model(ShadersManager::getInstance().getProgramID(Settings::BasicShader))
 {}
 
 void BasicDrawableObject::loadVertexArrays()
@@ -59,6 +59,3 @@ void BasicDrawableObject::draw()
 
 	glDrawArrays(GL_TRIANGLES, 0, _vertices.size());
 }
-
-BasicDrawableObject::~BasicDrawableObject()
-{}

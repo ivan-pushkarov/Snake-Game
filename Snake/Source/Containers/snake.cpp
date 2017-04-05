@@ -1,4 +1,4 @@
-#include "snake.h"
+#include "Snake.h"
 
 Snake::Snake(const glm::vec3& position) : _allowMove(true), _isAlive(true)
 {
@@ -27,11 +27,6 @@ Snake::Snake(const glm::vec3& position) : _allowMove(true), _isAlive(true)
 	}
 	
 	_snakeBody[0].setColor(Settings::SnakeColor);
-	
-}
-
-Snake::~Snake()
-{
 	
 }
 
@@ -65,10 +60,12 @@ void Snake::setHeadMoveDirection(const glm::vec3& direction)
 	{
 
 		if (((direction == Settings::UP && _snakeBody[0].getMoveDirection() != Settings::DOWN) ||
-		     (direction == Settings::DOWN && _snakeBody[0].getMoveDirection() != Settings::UP) ||
-		     (direction == Settings::RIGHT && _snakeBody[0].getMoveDirection() != Settings::LEFT) ||
-		     (direction == Settings::LEFT && _snakeBody[0].getMoveDirection() != Settings::RIGHT)) && _allowMove)
+			(direction == Settings::DOWN && _snakeBody[0].getMoveDirection() != Settings::UP) ||
+			(direction == Settings::RIGHT && _snakeBody[0].getMoveDirection() != Settings::LEFT) ||
+			(direction == Settings::LEFT && _snakeBody[0].getMoveDirection() != Settings::RIGHT)) && _allowMove)
+		{
 			_snakeBody[0].setMoveDirection(direction);
+		}
 
 		setAllowMove(false);
 	}
@@ -77,7 +74,12 @@ void Snake::setHeadMoveDirection(const glm::vec3& direction)
 bool Snake::detectBodyCollision(const glm::vec3& position)
 {
 	for (std::vector<Quad>::iterator it = _snakeBody.begin() + 1; it != _snakeBody.end(); ++it)
-		if (glm::length(it->getPosition() - position) < Settings::epsilion) return true;
+	{
+		if (glm::length(it->getPosition() - position) < Settings::epsilion)
+		{
+			return true;
+		}
+	}
 	return false;
 }
 
@@ -133,9 +135,13 @@ void Snake::move()
 			position += translate;
 
 			if (translate != glm::vec3(0.0f))
+			{
 				it->setPosition(position);
-			else 
+			}
+			else
+			{
 				it->move();
+			}
 
 			if (it->getMoveDirection() != moveDirectionCurrent)
 			{
@@ -143,7 +149,9 @@ void Snake::move()
 				moveDirectionHead = moveDirectionCurrent;
 				moveDirectionCurrent = it->getMoveDirection();
 				if (it != _snakeBody.begin())
+				{
 					it->setMoveDirection(moveDirectionHead);
+				}
 			}
 		}
 
@@ -171,7 +179,9 @@ void Snake::draw()
 {
 	// Draw the snake
 	for (std::vector<Quad>::iterator it = _snakeBody.begin() + 1; it != _snakeBody.end(); ++it)
+	{
 		it->draw();
+	}
 
 	_snakeBody.begin()->draw();
 }

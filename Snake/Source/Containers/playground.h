@@ -1,6 +1,4 @@
 #pragma once
-#ifndef PLAYGROUND_H
-#define PLAYGROUND_H
 
 #include <string>
 #include "models/line.h"
@@ -14,6 +12,8 @@ public:
 
 	Playground();
 
+	~Playground();
+
 	void draw();
 
 	bool play();
@@ -25,8 +25,6 @@ public:
 	bool detectCollision();
 
 	const int getRandomPositionOnGrid() const;
-
-	~Playground();
 
 protected:
 
@@ -51,5 +49,3 @@ private:
 	SDL_Event e;
 
 };
-
-#endif // !PLAYGROUND_H

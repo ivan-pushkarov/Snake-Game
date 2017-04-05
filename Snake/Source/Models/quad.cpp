@@ -1,6 +1,6 @@
-#include "quad.h"
+#include "Quad.h"
 
-Quad::Quad(std::string model) :
+Quad::Quad(const std::string& model) :
 	_quadSize(Settings::QuadSize),
 	_player(model)
 {
@@ -179,8 +179,12 @@ void Quad::InitializeVertices()
 void Quad::setColor(const glm::vec4& color)
 {
 	for (unsigned int i = 0; i < _vertices.size(); i++)
+	{
 		if (_vertices[i]._color == Settings::PlaygroundColor)
+		{
 			_vertices[i]._color = color;
+		}
+	}
 	loadModelToVRAM();
 }
 
@@ -195,6 +199,3 @@ const float Quad::getQuadSize() const
 {
 	return _quadSize;
 }
-
-Quad::~Quad()
-{}

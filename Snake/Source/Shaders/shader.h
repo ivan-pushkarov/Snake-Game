@@ -1,6 +1,4 @@
 #pragma once
-#ifndef SHADER_H
-#define SHADER_H
 
 #include "vertex/vertex.h"
 
@@ -20,8 +18,6 @@ public:
 
 	GLuint makeShaderProgram(const char*, const char*);
 
-	~Shader();
-
 private:
 
 	GLuint _programID;
@@ -30,6 +26,3 @@ private:
 
 	GLuint _fragmentShaderID;
 };
-
-#endif // !SHADER_H
-

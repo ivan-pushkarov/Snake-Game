@@ -1,6 +1,4 @@
 #pragma once
-#ifndef QUAD_H
-#define QUAD_H
 
 #include "managers/modelmanager.h"
 #include "models/basicdrawableobject.h"
@@ -9,7 +7,7 @@ class Quad : public BasicDrawableObject
 {
 public:
 
-	Quad(std::string model);
+	Quad(const std::string& model);
 
 	const float getQuadSize() const;
 
@@ -19,8 +17,6 @@ public:
 
 	virtual void InitializeVertices();
 
-	~Quad();
-
 protected:
 
 private:
@@ -29,5 +25,3 @@ private:
 
 	float _quadSize;
 };
-
-#endif // !QUAD_H

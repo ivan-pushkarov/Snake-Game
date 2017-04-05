@@ -1,4 +1,4 @@
-#include "shader.h"
+#include "Shader.h"
 #include <iostream>
 
 Shader::Shader(const char* vertexShader, const char* fragmentShader) 
@@ -27,7 +27,9 @@ void Shader::readFile(const char* filename, char* &contents)
 		contents = new char[file_length + 1];
 
 		for (unsigned int i = 0; i < file_length + 1; i++)
+		{
 			contents[i] = 0;
+		}
 
 		fread(contents, 1, file_length, fp);
 
@@ -55,7 +57,9 @@ GLuint Shader::makeVertexShader(const char* shaderSource)
 
 		printf_s("The error is: ");
 		for (std::vector<GLchar>::iterator it = errorLog.begin(); it != errorLog.end(); ++it)
+		{
 			printf_s("%c", (*it));
+		}
 		printf_s("\n");
 
 		// Provide the infolog in whatever manor you deem best.
@@ -86,7 +90,9 @@ GLuint Shader::makeFrangmentShader(const char* shaderSource)
 
 		printf_s("The error is: ");
 		for (std::vector<GLchar>::iterator it = errorLog.begin(); it != errorLog.end(); ++it)
+		{
 			printf_s("%c", (*it));
+		}
 		printf_s("\n");
 
 		// Provide the infolog in whatever manor you deem best.
@@ -100,7 +106,6 @@ GLuint Shader::makeFrangmentShader(const char* shaderSource)
 
 GLuint Shader::makeShaderProgram(const char* vertexShader, const char* fragmentShader)
 {
-	// Double check this pointer
 	char* vertexShaderSourceCode = NULL;
 	readFile(vertexShader, vertexShaderSourceCode);
 	_vertexShaderID = makeVertexShader(vertexShaderSourceCode);
@@ -141,6 +146,3 @@ GLuint Shader::makeShaderProgram(const char* vertexShader, const char* fragmentS
 
 	return _programID;
 }
-
-Shader::~Shader()
-{}

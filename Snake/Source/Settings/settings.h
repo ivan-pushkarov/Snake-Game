@@ -1,6 +1,4 @@
 #pragma once
-#ifndef SETTINGS_H
-#define SETTINGS_H
 
 #include <SDL.h>
 #include <glew.h>
@@ -56,12 +54,12 @@ namespace Settings {
 	static const std::string RegularFont = "./Fonts/OpenSans-Regular.ttf";
 	static const std::string BoldFont = "./Fonts/OpenSans-Bold.ttf";
 
-	static const std::string BasicVertexShader = "./Shaders/BasicVertexShader.txt";
-	static const std::string BasicFragmentShader = "./Shaders/BasicFragmentShader.txt";
+	static const std::string BasicVertexShader = "./Shaders/BasicVertexShader.vs";
+	static const std::string BasicFragmentShader = "./Shaders/BasicFragmentShader.fs";
 	static const std::string BasicShader = BasicVertexShader + BasicFragmentShader;
 
-	static const std::string TextureVertexShader = "./Shaders/TextureVertexShader.txt";
-	static const std::string TextureFragmentShader = "./Shaders/TextureFragmentShader.txt";
+	static const std::string TextureVertexShader = "./Shaders/TextureVertexShader.vs";
+	static const std::string TextureFragmentShader = "./Shaders/TextureFragmentShader.fs";
 	static const std::string TextureShader = TextureVertexShader + TextureFragmentShader;
 
 	static const glm::vec3 UP = glm::vec3(0.0, Unit, 0.0);
@@ -92,5 +90,3 @@ namespace Settings {
 	static const glm::vec4 SnakeColor = glm::vec4(0.0, 0.0, 0.0, 1.0);
 
 };
-
-#endif // !SETTINGS_H

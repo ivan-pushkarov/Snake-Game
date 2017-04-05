@@ -1,4 +1,4 @@
-#include "line.h"
+#include "Line.h"
 
 Line::Line() : _width(Settings::DefaultLineWidth)
 {
@@ -56,5 +56,3 @@ void Line::InitializeVertices()
 	vert._color = Settings::LineColor;
 	_vertices.push_back(vert);
 }
-
-Line::~Line() {}

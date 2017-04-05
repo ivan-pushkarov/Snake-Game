@@ -1,6 +1,4 @@
 #pragma once
-#ifndef BASICDRAWABLEOBJECT_H
-#define BASICDRAWABLEOBJECT_H
 
 #include "model.h"
 #include <string.h>
@@ -20,10 +18,6 @@ public:
 
 	void draw();
 
-	~BasicDrawableObject();
-
 private:
 
 };
-
-#endif // !BASICDRAWABLEOBJECT_H

@@ -1,6 +1,4 @@
 #pragma once
-#ifndef MODELMANAGER_H
-#define MODELMANAGER_H
 
 #include "vertex/vertex.h"
 #include <unordered_map>
@@ -10,11 +8,11 @@ public:
 
 	static ModelManager& getInstance();
 
-	const bool findVBO(std::string model) const;
+	const bool findVBO(const std::string& model) const;
 
-	const GLuint getVBO(std::string model);
+	const GLuint getVBO(const std::string& model);
 
-	void genVBO(std::string model);
+	void genVBO(const std::string& model);
 
 	~ModelManager();
 
@@ -24,10 +22,6 @@ private:
 
 	ModelManager();
 
-	static ModelManager* instance;
-
 	std::unordered_map<std::string, GLuint> _vbos;
 
 };
-
-#endif // !MODELMANAGER_H

@@ -1,6 +1,4 @@
 #pragma once
-#ifndef MODEL_H
-#define MODEL_H
 
 #include <time.h>
 #include "vertex/vertex.h"
@@ -49,9 +47,6 @@ public:
 
 	virtual void InitializeVertices() = 0;
 
-
-	~Model();
-
 protected:
 
 	// VBO Buffer ID
@@ -86,5 +81,3 @@ private:
 	void calcTransform();
 
 };
-
-#endif // !MODEL_H

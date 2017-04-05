@@ -1,6 +1,4 @@
 #pragma once
-#ifndef LINE_H
-#define LINE_H
 
 #include "models/basicdrawableobject.h"
 
@@ -11,11 +9,7 @@ public:
 
 	virtual void InitializeVertices();
 
-	~Line();
-
 private:
 
 	unsigned int _width;
 };
-
-#endif // !LINE_H

@@ -1,4 +1,4 @@
-#include "letter.h"
+#include "Letter.h"
 #include <string>
 
 Letter::Letter(char letter) :
@@ -47,13 +47,14 @@ void Letter::draw()
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
 	/* Try to load and render the character */
-	if (!FT_Load_Char(Fontsmanager::getInstance().getFace(_font), _letter, FT_LOAD_RENDER)) {
+	if (!FT_Load_Char(Fontsmanager::getInstance().getFace(_font), _letter, FT_LOAD_RENDER)) 
+	{
 		//continue;
 
 		/* Upload the "bitmap", which contains an 8-bit grayscale image, as an alpha texture */
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_ALPHA, Fontsmanager::getInstance().getFace(_font)->glyph->bitmap.width, Fontsmanager::getInstance().getFace(_font)->glyph->bitmap.rows, 0, GL_ALPHA, GL_UNSIGNED_BYTE, Fontsmanager::getInstance().getFace(_font)->glyph->bitmap.buffer);
 
-		this->TextureDrawableObject::draw();
+		TextureDrawableObject::draw();
 	}
 }
 
@@ -73,7 +74,7 @@ void Letter::setFontSize(unsigned short size)
 		_vbo = ModelManager::getInstance().getVBO(std::string(&_letter) + _font + std::to_string(_size));
 }
 
-void Letter::setFont(std::string font)
+void Letter::setFont(const std::string& font)
 {
 	if (font == Settings::RegularFont || font == Settings::BoldFont)
 	{
@@ -98,7 +99,8 @@ void Letter::InitializeVertices()
 	_vertices.clear();
 	
 	/* Try to load and render the character */
-	if (!FT_Load_Char(Fontsmanager::getInstance().getFace(_font), _letter, FT_LOAD_RENDER)) {
+	if (!FT_Load_Char(Fontsmanager::getInstance().getFace(_font), _letter, FT_LOAD_RENDER)) 
+	{
 		//continue;
 
 		/* Calculate the vertex and texture coordinates */
@@ -137,6 +139,3 @@ void Letter::InitializeVertices()
 		_vertices.push_back(vert);
 	}
 }
-
-Letter::~Letter()
-{}

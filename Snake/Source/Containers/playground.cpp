@@ -1,4 +1,4 @@
-#include "playground.h"
+#include "Playground.h"
 
 Playground::Playground() : _paused(true), _speed(Settings::SnakeSpeed), _active(true)
 {
@@ -6,12 +6,14 @@ Playground::Playground() : _paused(true), _speed(Settings::SnakeSpeed), _active(
 	_height = Settings::PlaygroundHeight;
 
 	for (int j = _height / 2; j > -_height / 2; j--)
+	{
 		for (int i = -_width / 2; i < _width / 2; i++)
 		{
 			Quad quad(Settings::ModelPlayground);
 			quad.setPosition(glm::vec3(glm::length(Settings::Distance) * (0.0025*Settings::ApplicationWidth) * i, glm::length(Settings::Distance) * (0.0025*Settings::ApplicationWidth) * j, 0.0f) + Settings::PlaygroundOffset);
 			_tiles.push_back(quad);
 		}
+	}
 
 	_snake = new Snake(_tiles[getRandomPositionOnGrid()].getPosition());
 
@@ -23,6 +25,13 @@ Playground::Playground() : _paused(true), _speed(Settings::SnakeSpeed), _active(
 		_mouse->setPosition(_tiles[getRandomPositionOnGrid()].getPosition());
 
 	_scoreboard = new Scoreboard();
+}
+
+Playground::~Playground()
+{
+	delete _snake;
+	delete _mouse;
+	delete _scoreboard;
 }
 
 const int Playground::getRandomPositionOnGrid() const
@@ -62,25 +71,41 @@ bool Playground::play()
 			if (e.type == SDL_QUIT || e.key.keysym.sym == 'q')
 			{
 				if (_scoreboard->getHiScore() == _scoreboard->getScore())
+				{
 					_scoreboard->writeHiScore();
+				}
 				return 1;
 			}
 
-			if (e.key.keysym.sym == 'r') restart();
+			if (e.key.keysym.sym == 'r')
+			{
+				restart();
+			}
 
 			if (e.key.keysym.sym == 'w' || e.key.keysym.scancode == SDL_SCANCODE_UP)
+			{
 				_snake[0].setHeadMoveDirection(Settings::UP);
+			}
 
 			if (e.key.keysym.sym == 's' || e.key.keysym.scancode == SDL_SCANCODE_DOWN)
+			{
 				_snake[0].setHeadMoveDirection(Settings::DOWN);
+			}
 
 			if (e.key.keysym.sym == 'a' || e.key.keysym.scancode == SDL_SCANCODE_LEFT)
+			{
 				_snake[0].setHeadMoveDirection(Settings::LEFT);
+			}
 
 			if (e.key.keysym.sym == 'd' || e.key.keysym.scancode == SDL_SCANCODE_RIGHT)
+			{
 				_snake[0].setHeadMoveDirection(Settings::RIGHT);
+			}
 
-			if (e.key.keysym.sym == 'p') pause();
+			if (e.key.keysym.sym == 'p')
+			{
+				pause();
+			}
 
 		}
 	}
@@ -97,7 +122,9 @@ bool Playground::play()
 void Playground::pause()
 {
 	if (_active)
+	{
 		_paused = !_paused;
+	}
 }
 
 bool Playground::detectCollision()
@@ -117,14 +144,22 @@ bool Playground::detectCollision()
 			collision = false;
 			_mouse->setPosition(_tiles[getRandomPositionOnGrid()].getPosition());
 
-			if (glm::length(_snake->getHeadPosition() - _mouse->getPosition()) < Settings::epsilion || _snake->detectBodyCollision(_mouse->getPosition())) 
+			if (glm::length(_snake->getHeadPosition() - _mouse->getPosition()) < Settings::epsilion || _snake->detectBodyCollision(_mouse->getPosition()))
+			{
 				collision = true;
+			}
 		}
 	}
 
-	if (_snake->detectBodyCollision(_snake->getHeadPosition())) _snake->die();
+	if (_snake->detectBodyCollision(_snake->getHeadPosition()))
+	{
+		_snake->die();
+	}
 
-	if (_snake->isAlive()) _snake->setAllowMove(true);
+	if (_snake->isAlive())
+	{
+		_snake->setAllowMove(true);
+	}
 	else
 	{
 		_snake->setAllowMove(false);
@@ -152,7 +187,9 @@ void Playground::restart()
 	_scoreboard->initText();
 
 	if (_scoreboard->getHiScore() == _scoreboard->getScore())
+	{
 		_scoreboard->writeHiScore();
+	}
 
 	_scoreboard->clearFinalMessage();
 	_scoreboard->setScore(0);
@@ -170,18 +207,13 @@ void Playground::restart()
 void Playground::draw()
 {
 	for (std::vector<Quad>::iterator it = _tiles.begin(); it != _tiles.end(); ++it)
+	{
 		it->draw();
+	}
 	
 	_snake->draw();
 
 	_mouse->draw();
 
 	_scoreboard->draw();
-}
-
-Playground::~Playground()
-{
-	delete _snake;
-	delete _mouse;
-	delete _scoreboard;
 }

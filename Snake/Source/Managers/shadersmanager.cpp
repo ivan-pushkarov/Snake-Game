@@ -1,29 +1,40 @@
-#include "shadersmanager.h"
+#include "ShadersManager.h"
 
-Shadersmanager* Shadersmanager::instance = 0;
-
-Shadersmanager::Shadersmanager()
+ShadersManager::ShadersManager()
 {
 	_shaders[Settings::BasicShader] = makeShaderProgram(Settings::BasicVertexShader.c_str(), Settings::BasicFragmentShader.c_str());
 	_shaders[Settings::TextureShader] = makeShaderProgram(Settings::TextureVertexShader.c_str(), Settings::TextureFragmentShader.c_str());
 }
 
-Shadersmanager& Shadersmanager::getInstance()
+ShadersManager::~ShadersManager()
 {
-	static Shadersmanager instance;
+	for (std::unordered_map<std::string, GLuint>::iterator it = _shaders.begin(); it != _shaders.end(); ++it)
+	{
+		glDeleteProgram(it->second);
+	}
+}
+
+ShadersManager& ShadersManager::getInstance()
+{
+	static ShadersManager instance;
 
 	return instance;
 }
 
-const GLuint Shadersmanager::getProgramID(std::string shader)
+const GLuint ShadersManager::getProgramID(const std::string& shader)
 {
 	if (_shaders.find(shader) != _shaders.end())
+	{
 		return _shaders[shader];
+	}
 	else
+	{
 		printf_s("Error: Shader %s not found!", shader.c_str());
+		//return 0;
+	}
 }
 
-void Shadersmanager::readFile(const char* filename, char* &contents)
+void ShadersManager::readFile(const char* filename, char* &contents)
 {
 	FILE* fp;
 
@@ -39,7 +50,9 @@ void Shadersmanager::readFile(const char* filename, char* &contents)
 		contents = new char[file_length + 1];
 
 		for (unsigned int i = 0; i < file_length + 1; i++)
+		{
 			contents[i] = 0;
+		}
 
 		fread(contents, 1, file_length, fp);
 
@@ -48,7 +61,7 @@ void Shadersmanager::readFile(const char* filename, char* &contents)
 	}
 }
 
-const GLuint Shadersmanager::makeVertexShader(char* &shaderSource)
+const GLuint ShadersManager::makeVertexShader(char* &shaderSource)
 {
 	const GLchar* source = (const GLchar*)shaderSource;
 
@@ -69,7 +82,9 @@ const GLuint Shadersmanager::makeVertexShader(char* &shaderSource)
 
 		printf_s("The error is: ");
 		for (std::vector<GLchar>::iterator it = errorLog.begin(); it != errorLog.end(); ++it)
+		{
 			printf_s("%c", (*it));
+		}
 		printf_s("\n");
 
 		// Provide the infolog in whatever manor you deem best.
@@ -81,7 +96,7 @@ const GLuint Shadersmanager::makeVertexShader(char* &shaderSource)
 	return _vertexShaderID;
 }
 
-const GLuint Shadersmanager::makeFrangmentShader(char* &shaderSource)
+const GLuint ShadersManager::makeFrangmentShader(char* &shaderSource)
 {
 	const GLchar* source = (const GLchar*)shaderSource;
 
@@ -102,7 +117,9 @@ const GLuint Shadersmanager::makeFrangmentShader(char* &shaderSource)
 
 		printf_s("The error is: ");
 		for (std::vector<GLchar>::iterator it = errorLog.begin(); it != errorLog.end(); ++it)
+		{
 			printf_s("%c", (*it));
+		}
 		printf_s("\n");
 
 		// Provide the infolog in whatever manor you deem best.
@@ -114,7 +131,7 @@ const GLuint Shadersmanager::makeFrangmentShader(char* &shaderSource)
 	return _fragmentShaderID;
 }
 
-const GLuint Shadersmanager::makeShaderProgram(const char* vertexShader, const char* fragmentShader)
+const GLuint ShadersManager::makeShaderProgram(const char* vertexShader, const char* fragmentShader)
 {
 	char* vertexShaderSourceCode = NULL;
 	readFile(vertexShader, vertexShaderSourceCode);
@@ -155,10 +172,4 @@ const GLuint Shadersmanager::makeShaderProgram(const char* vertexShader, const c
 	glDeleteShader(_fragmentShaderID);
 
 	return _programID;
-}
-
-Shadersmanager::~Shadersmanager()
-{
-	for (std::unordered_map<std::string, GLuint>::iterator it = _shaders.begin(); it != _shaders.end(); ++it)
-		glDeleteProgram(it->second);
 }

@@ -1,6 +1,4 @@
 #pragma once
-#ifndef SNAKE_H
-#define SNAKE_H
 
 #include "models/quad.h"
 #include "models/letter.h"
@@ -35,8 +33,6 @@ public:
 
 	bool detectBodyCollision(const glm::vec3&);
 
-	~Snake();
-
 protected:
 
 private:
@@ -52,5 +48,3 @@ private:
 	glm::vec3 _tailRotation;
 
 };
-
-#endif	// !SNAKE_H

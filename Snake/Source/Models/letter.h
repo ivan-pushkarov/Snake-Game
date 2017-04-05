@@ -1,6 +1,4 @@
 #pragma once
-#ifndef LETTER_H
-#define LETTER_H
 
 #include "model.h"
 #include "settings/settings.h"
@@ -23,11 +21,9 @@ public:
 
 	void setFontSize(unsigned short);
 
-	void setFont(std::string);
+	void setFont(const std::string&);
 
 	void draw();
-
-	~Letter();
 
 private:
 
@@ -41,5 +37,3 @@ private:
 
 	std::string _font;
 };
-
-#endif // !LETTER_H

@@ -1,26 +1,24 @@
 #pragma once
-#ifndef SHADERSYSTEM_H
-#define SHADERSYSTEM_H
 
 #include "vertex/vertex.h"
 #include <string>
 #include <unordered_map>
 
-class Shadersmanager
+class ShadersManager
 {
 public:
 
-	static Shadersmanager& getInstance();
+	static ShadersManager& getInstance();
 
-	const GLuint getProgramID(std::string);
+	const GLuint getProgramID(const std::string&);
 
 	const GLuint makeShaderProgram(const char*, const char*);
 
-	~Shadersmanager();
+	~ShadersManager();
 
 private:
 
-	Shadersmanager();
+	ShadersManager();
 
 	const GLuint makeVertexShader(char* &shaderSource);
 
@@ -28,10 +26,6 @@ private:
 
 	const GLuint makeFrangmentShader(char* &shaderSource);
 
-	static Shadersmanager* instance;
-
 	std::unordered_map<std::string, GLuint> _shaders;
 
 };
-
-#endif // !SHADERSYSTEM_H

@@ -1,6 +1,4 @@
 #pragma once
-#ifndef TEXTUREDRAWABLEOBJECT_H
-#define TEXTUREDRAWABLEOBJECT_H
 
 #include "model.h"
 #include <string.h>
@@ -12,6 +10,8 @@ public:
 
 	TextureDrawableObject();
 
+	~TextureDrawableObject();
+
 	void loadVertexArrays();
 
 	virtual void loadModelToVRAM();
@@ -20,8 +20,6 @@ public:
 	
 	void draw();
 
-	~TextureDrawableObject();
-
 protected:
 
 	GLuint _texture;
@@ -29,5 +27,3 @@ protected:
 private:
 
 };
-
-#endif // !TEXTUREDRAWABLEOBJECT_H

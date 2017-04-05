@@ -1,8 +1,13 @@
-#include "texturedrawableobject.h"
+#include "TextureDrawableObject.h"
 
-TextureDrawableObject::TextureDrawableObject() : Model(Shadersmanager::getInstance().getProgramID(Settings::TextureShader))
+TextureDrawableObject::TextureDrawableObject() : Model(ShadersManager::getInstance().getProgramID(Settings::TextureShader))
 {
 	glGenTextures(1, &_texture);
+}
+
+TextureDrawableObject::~TextureDrawableObject()
+{
+	glDeleteTextures(1, &_texture);
 }
 
 void TextureDrawableObject::loadVertexArrays()
@@ -70,9 +75,4 @@ void TextureDrawableObject::draw()
 	glDisableVertexAttribArray(matrixID);
 	glDisableVertexAttribArray(positionID);
 	glDisableVertexAttribArray(texturePosID);
-}
-
-TextureDrawableObject::~TextureDrawableObject()
-{
-	glDeleteTextures(1, &_texture);
 }

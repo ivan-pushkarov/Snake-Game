@@ -97,7 +97,8 @@
       </ShaderType>
     </FxCompile>
     <PostBuildEvent>
-      <Command> xcopy /d /y "$(ProjectDir)\dlls\*.*" "$(ProjectDir)\..\Release"</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -133,7 +134,8 @@
       </ShaderType>
     </FxCompile>
     <PostBuildEvent>
-      <Command> xcopy /d /y "$(ProjectDir)\dlls\*.*" "$(ProjectDir)\..\Release"</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -155,47 +157,47 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Source\Application\application.cpp" />
-    <ClCompile Include="Source\Containers\playground.cpp" />
-    <ClCompile Include="Source\Containers\scoreboard.cpp" />
-    <ClCompile Include="Source\Containers\snake.cpp" />
-    <ClCompile Include="Source\Managers\fontsmanager.cpp" />
+    <ClCompile Include="Source\Application\Application.cpp" />
+    <ClCompile Include="Source\Containers\Playground.cpp" />
+    <ClCompile Include="Source\Containers\Scoreboard.cpp" />
+    <ClCompile Include="Source\Containers\Snake.cpp" />
+    <ClCompile Include="Source\Managers\FontsManager.cpp" />
     <ClCompile Include="Source\Managers\ModelManager.cpp" />
-    <ClCompile Include="Source\Managers\shadersmanager.cpp" />
+    <ClCompile Include="Source\Managers\ShadersManager.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Source\Math\Vector3\Vector3.cpp" />
     <ClCompile Include="Source\Models\BasicDrawableObject.cpp" />
-    <ClCompile Include="Source\Models\letter.cpp" />
-    <ClCompile Include="Source\Models\line.cpp" />
-    <ClCompile Include="Source\Models\model.cpp" />
-    <ClCompile Include="Source\Models\quad.cpp" />
+    <ClCompile Include="Source\Models\Letter.cpp" />
+    <ClCompile Include="Source\Models\Line.cpp" />
+    <ClCompile Include="Source\Models\Model.cpp" />
+    <ClCompile Include="Source\Models\Quad.cpp" />
     <ClCompile Include="Source\Models\TextureDrawableObject.cpp" />
-    <ClCompile Include="Source\Shaders\shader.cpp" />
+    <ClCompile Include="Source\Shaders\Shader.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Source\Application\application.h" />
-    <ClInclude Include="Source\Containers\playground.h" />
-    <ClInclude Include="Source\Containers\scoreboard.h" />
-    <ClInclude Include="Source\Containers\snake.h" />
-    <ClInclude Include="Source\Managers\fontsmanager.h" />
+    <ClInclude Include="Source\Application\Application.h" />
+    <ClInclude Include="Source\Containers\Playground.h" />
+    <ClInclude Include="Source\Containers\Scoreboard.h" />
+    <ClInclude Include="Source\Containers\Snake.h" />
+    <ClInclude Include="Source\Managers\FontsManager.h" />
     <ClInclude Include="Source\Managers\ModelManager.h" />
-    <ClInclude Include="Source\Managers\shadersmanager.h" />
+    <ClInclude Include="Source\Managers\ShadersManager.h" />
     <ClInclude Include="Source\Math\Vector3\Vector3.h" />
     <ClInclude Include="Source\Models\BasicDrawableObject.h" />
-    <ClInclude Include="Source\Models\letter.h" />
-    <ClInclude Include="Source\Models\line.h" />
-    <ClInclude Include="Source\Models\model.h" />
-    <ClInclude Include="Source\Models\quad.h" />
+    <ClInclude Include="Source\Models\Letter.h" />
+    <ClInclude Include="Source\Models\Line.h" />
+    <ClInclude Include="Source\Models\Model.h" />
+    <ClInclude Include="Source\Models\Quad.h" />
     <ClInclude Include="Source\Models\TextureDrawableObject.h" />
-    <ClInclude Include="Source\Settings\settings.h" />
-    <ClInclude Include="Source\Shaders\shader.h" />
+    <ClInclude Include="Source\Settings\Settings.h" />
+    <ClInclude Include="Source\Shaders\Shader.h" />
     <ClInclude Include="Source\Vertex\vertex.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="BasicFragmentShader.txt" />
-    <Text Include="TextureFragmentShader.txt" />
-    <Text Include="TextureVertexShader.txt" />
-    <Text Include="BasicVertexShader.txt" />
+    <Text Include="Shaders\BasicFragmentShader.fs" />
+    <Text Include="Shaders\BasicVertexShader.vs" />
+    <Text Include="Shaders\TextureFragmentShader.fs" />
+    <Text Include="Shaders\TextureVertexShader.vs" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

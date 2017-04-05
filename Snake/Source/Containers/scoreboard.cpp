@@ -1,4 +1,4 @@
-#include "scoreboard.h"
+#include "Scoreboard.h"
 
 Scoreboard::Scoreboard() : _level(1), _score(0), _speed(1) 
 {
@@ -9,10 +9,14 @@ Scoreboard::Scoreboard() : _level(1), _score(0), _speed(1)
 void Scoreboard::draw()
 {
 	for (std::vector<Letter>::iterator it = _text.begin(); it != _text.end(); ++it)
+	{
 		it->draw();
+	}
 
 	for (std::vector<Letter>::iterator it = _finalMessage.begin(); it != _finalMessage.end(); ++it)
+	{
 		it->draw();
+	}
 }
 
 void Scoreboard::initText()
@@ -46,8 +50,15 @@ void Scoreboard::initText()
 	{
 		Letter letter(text[i]);
 
-		if (br > 2) letter.setFontSize(Settings::BigFontSize);
-		if (text[i] >= 48 && text[i] <= 57) { letter.setFontSize(Settings::BigFontSize); letter.setFont(Settings::BoldFont); }
+		if (br > 2)
+		{
+			letter.setFontSize(Settings::BigFontSize);
+		}
+		if (text[i] >= 48 && text[i] <= 57) 
+		{ 
+			letter.setFontSize(Settings::BigFontSize); 
+			letter.setFont(Settings::BoldFont); 
+		}
 
 		if (text[i] == '\n')
 		{
@@ -89,9 +100,13 @@ void Scoreboard::initFinalMessage()
 	std::string finalMessage;
 
 	if (_score < 10 * _level * Settings::SnakeMagnitude - 10)
+	{
 		finalMessage = "GAME OVER!";
+	}
 	else
+	{
 		finalMessage = "YOU WIN!";
+	}
 
 
 	_finalMessage.clear();
@@ -105,7 +120,9 @@ void Scoreboard::initFinalMessage()
 		_finalMessage.back().setPosition(position + glm::vec3(1.1 * _width, 0.0, 0.0));
 
 		if (finalMessage[i] == ' ')
+		{
 			_finalMessage.back().setPosition(position + glm::vec3(2 * _width, 0.0, 0.0));
+		}
 
 		position = _finalMessage.back().getPosition();
 		_width = _finalMessage.back().getWidth();
@@ -120,7 +137,10 @@ void Scoreboard::clearFinalMessage()
 void Scoreboard::updateScore()
 {
 	_score += 10;
-	if (_hiScore < _score) _hiScore = _score;
+	if (_hiScore < _score)
+	{
+		_hiScore = _score;
+	}
 	initText();
 }
 
@@ -186,6 +206,3 @@ void Scoreboard::setLevel(unsigned short level)
 	_level = level;
 	initText();
 }
-
-Scoreboard::~Scoreboard()
-{}

@@ -1,6 +1,4 @@
 #pragma once
-#ifndef SCOREBOARD_H
-#define SCOREBOARD_H
 
 #include <string>
 #include "models/letter.h"
@@ -44,8 +42,6 @@ public:
 
 	void setSpeed(unsigned short);
 
-	~Scoreboard();
-
 private:
 
 	std::vector<Letter> _text;
@@ -60,5 +56,3 @@ private:
 
 	unsigned short _hiScore;
 };
-
-#endif	// !MENU_H
